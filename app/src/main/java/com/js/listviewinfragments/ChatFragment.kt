@@ -15,10 +15,10 @@ import android.widget.TextView
 
 class ChatFragment : Fragment() {
 
-    var userName: String? = null
+    lateinit var userName: String
     var chatEditText: EditText? = null
     var chatButton:Button? = null
-    var chatList = mutableListOf<String>()
+    var chatList = mutableListOf<Chat>()
     var msgChatList: ListView? = null
 
 
@@ -34,18 +34,23 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userName = arguments?.getString("username", "brak nazwy użytkownika")
+        userName = requireArguments().getString("username", "brak nazwy użytkownika")
         view.findViewById<TextView>(R.id.textview_user_name).text = userName
 
         chatEditText = view.findViewById(R.id.edittext_chat_text)
         chatButton = view.findViewById(R.id.button_chat_text)
         msgChatList = view.findViewById(R.id.listview_chat_text)
-        val adapter = ArrayAdapter(requireActivity(), R.layout.simple_list_items, R.id.textview_chat_text_show, chatList)
-        msgChatList?.adapter= adapter
+
+//        val adapter = ArrayAdapter(requireActivity(), R.layout.simple_list_items, R.id.textview_chat_text_show, chatList)
+//        msgChatList?.adapter= adapter
 //
+        val adapter = ChatListAdapter(requireActivity(), chatList)
+        msgChatList?.adapter = adapter
+
         chatButton?.setOnClickListener {
-            chatList.add(chatEditText?.text.toString())
-          
+//            chatList.add(chatEditText?.text.toString())
+             chatList.add(Chat(userName=userName, chatText = chatEditText?.text.toString()  ))
+
             // trzeba powiadomić adapter, że dane się zmieniły
             adapter.notifyDataSetChanged()
 

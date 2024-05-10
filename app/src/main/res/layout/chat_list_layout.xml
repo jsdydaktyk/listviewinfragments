@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/textview_chatuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"
+        android:background="#3F51B5"
+        android:textColor="#FFEB3B"
+        android:padding="5dp"
+        android:layout_marginStart="5dp"
+        />
+
+    <TextView
+        android:id="@+id/textview_chattext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:background="#033E45"
+        android:textColor="#DEF5FF"
+        android:padding="5dp"
+        
+        />
+
+</LinearLayout>
